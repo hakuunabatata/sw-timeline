@@ -1,0 +1,61 @@
+.logo {
+  height: 100px;
+  margin-right: auto;
+}
+
+#container {
+  width: 100%;
+  max-width: 1180px;
+  padding: 0 30px;
+  margin: 32px auto;
+}
+
+#container header {
+  display: flex;
+  align-items: center;
+}
+
+.update {
+  margin-left: auto;
+}
+
+.searchbtn{
+    vertical-align: middle;    
+}
+
+button {
+  height: 50px;
+  background: rgba(255, 251, 0, 0.883);
+  border: 0;
+  border-radius: 10px;
+  color: black;
+  font-weight: 700;
+  margin-top: 16px;
+  display: inline-block;
+  text-align: center;
+  text-decoration: none;
+  font-size: 18px;
+  line-height: 45px;
+  width: 100px;
+  border: 1px solid;
+  /* padding: 0 30px;  */
+}
+
+input {
+  height: 50px;
+  background: #fff;
+  border: 0;
+  border-radius: 10px;
+  color: black;
+  font-weight: 700;
+  margin-top: 16px;
+  display: inline-block;
+  text-align: center;
+  text-decoration: none;
+  font-size: 18px;
+  line-height: 60px;
+  width: 500px;
+    
+  border: 1px solid;
+  /* padding: 0 25px;  */
+}
