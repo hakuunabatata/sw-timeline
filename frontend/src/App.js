@@ -1,10 +1,10 @@
 import React, {useState} from "react";
-import MainPage from "./pages/MainPage";
+import Routes from "./routes";
 import './global.css'
 
 function App() {
   return (
-    <MainPage/>
+    <Routes/>
   );
 }
 

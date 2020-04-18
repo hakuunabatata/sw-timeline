@@ -1,9 +1,47 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import "./styles.css";
 import Logo from "../../assets/logo.png";
-import { FiPlay, FiMessageCircle, FiTv, FiBookOpen, FiFilm } from "react-icons/fi";
+import {
+  FiPlay,
+  FiMessageCircle,
+  FiTv,
+  FiBookOpen,
+  FiFilm,
+} from "react-icons/fi";
+import api from "../../services/api";
+import axios from 'axios'
 
 export default function MainPage() {
+  const [medias, setMedia] = useState([]);
+
+  function setIcon(media) {
+    if (media === "game") {
+      return <FiPlay size={50} />;
+    }
+    if (media === "tv") {
+      return <FiTv size={50} />;
+    }
+    if (media === "novel") {
+      return <FiBookOpen size={50} />;
+    }
+    if (media === "comic") {
+      return <FiMessageCircle size={50} />;
+    }
+    if (media === "film") {
+      return <FiFilm size={50} />;
+    }
+  }
+
+  useEffect(() => {
+    api.get("media").then((response) => {
+      setMedia(response.data);
+    });
+    // axios({
+    //   method: 'GET',
+    //   url: 'http://localhost:3333/media'
+    // }).then(res => {setMedia(res.data)})
+  });
+
   return (
     <div id="container">
       <div className="logo">
@@ -11,91 +49,20 @@ export default function MainPage() {
       </div>
 
       <ul>
-        <li className="game legends">
-          <img
-            src="https://starecat.com/content/wp-content/uploads/star-wars-the-cage-awakens-nicolas-cage-poster.jpg"
-            alt=""
-          />
-          <div className="title">Star Wars Battle for Varzea Paulista</div>
-          <div className="type">
-            <div className="icon">
-              <FiPlay size={50} />
+        {medias.map((media) => (
+          <li key={media._id} className={media.media + " " + media.universe}>
+            <img src={media.image} alt="" />
+            <div className="title">{media.title}</div>
+            <div className="type">
+              <div className="icon">{setIcon(media.media)}</div>
+              <div className="typetxt">{media.media}</div>
             </div>
-            <div className="typetxt">Game</div>
-          </div>
-          <div className="timeline">135 BBC</div>
-          <div className="series">Battle for Varzea</div>
-          <div className="date">25-25-25</div>
-          <div className="universe">Legends</div>
-        </li>
-        <li className="comic canon">
-          <img
-            src="https://starecat.com/content/wp-content/uploads/star-wars-the-cage-awakens-nicolas-cage-poster.jpg"
-            alt=""
-          />
-          <div className="title">Star Wars Battle for Varzea Paulista</div>
-          <div className="type">
-            <div className="icon">
-              <FiMessageCircle size={50} />
-            </div>
-            <div className="typetxt">Comic</div>
-          </div>
-          <div className="timeline">135 BBC</div>
-          <div className="series">Battle for Varzea</div>
-          <div className="date">25-25-25</div>
-          <div className="universe">Canon</div>
-        </li>
-        <li className="film canon">
-          <img
-            src="https://starecat.com/content/wp-content/uploads/star-wars-the-cage-awakens-nicolas-cage-poster.jpg"
-            alt=""
-          />
-          <div className="title">Star Wars Battle for Varzea Paulista</div>
-          <div className="type">
-            <div className="icon">
-              <FiFilm size={50} />
-            </div>
-            <div className="typetxt">Film</div>
-          </div>
-          <div className="timeline">135 BBC</div>
-          <div className="series">Battle for Varzea</div>
-          <div className="date">25-25-1925</div>
-          <div className="universe">Canon</div>
-        </li>
-        <li className="novel legends">
-          <img
-            src="https://starecat.com/content/wp-content/uploads/star-wars-the-cage-awakens-nicolas-cage-poster.jpg"
-            alt=""
-          />
-          <div className="title">Star Wars Battle for Varzea Paulista</div>
-          <div className="type">
-            <div className="icon">
-              <FiBookOpen size={50} />
-            </div>
-            <div className="typetxt">Novel</div>
-          </div>
-          <div className="timeline">135 BBC</div>
-          <div className="series">Battle for Varzea</div>
-          <div className="date">25-25-25</div>
-          <div className="universe">Legends</div>
-        </li>
-        <li className="tv legends">
-          <img
-            src="https://starecat.com/content/wp-content/uploads/star-wars-the-cage-awakens-nicolas-cage-poster.jpg"
-            alt=""
-          />
-          <div className="title">Star Wars Battle for Varzea Paulista</div>
-          <div className="type">
-            <div className="icon">
-              <FiTv size={50} />
-            </div>
-            <div className="typetxt">TV</div>
-          </div>
-          <div className="timeline">135 BBC</div>
-          <div className="series">Battle for Varzea</div>
-          <div className="date">25-25-25</div>
-          <div className="universe">Legends</div>
-        </li>
+            <div className="timeline">{media.timeline}</div>
+            <div className="series">{media.series}</div>
+            <div className="date">{media.releasedate}</div>
+            <div className="universe">{media.universe}</div>
+          </li>
+        ))}
       </ul>
     </div>
   );
