@@ -25,7 +25,7 @@
   list-style: none;
 }
 
-#container ul li {
+#container ul .content {
   width: 100%;
   height: 250px;
   padding: 24px;
@@ -49,62 +49,61 @@
   font-size: 25px;
 }
 
-#container ul li .type .typetxt{
+#container ul li .type .typetxt {
   position: absolute;
   left: 340px;
   bottom: 30px;
   font-size: 25px;
 }
 
-#container ul li .type .icon{
+#container ul li .type .icon {
   position: absolute;
   left: 340px;
   bottom: 50px;
   font-size: 25px;
 }
 
-#container ul .film .type {
+.film {
   color: #ffc500;
 }
-#container ul .game .type {
+.game {
   color: #5dff00;
 }
-#container ul .novel .type {
+.novel {
   color: #df61df;
 }
-#container ul .comic .type {
+.comic {
   color: #df8315;
 }
-#container ul .tv .type {
-  color: #0303bc;
+.tv {
+  color: #00ffd4;
+}
+.legends {
+  color: #00ffd4;
+}
+.canon {
+  color: #ff0000;
 }
 
-#container ul li .universe{
+#container ul li .universe {
   position: absolute;
   right: 35px;
   bottom: 30px;
   font-size: 25px;
 }
 
-#container ul li .timeline{
+#container ul li .timeline {
   position: absolute;
   right: 500px;
   bottom: 30px;
   font-size: 25px;
 }
 
-#container ul li .date{
+#container ul li .date {
   position: absolute;
   right: 200px;
   bottom: 30px;
   font-size: 25px;
-}
-
-#container ul .legends .universe{
-  color: #00ffd4;
-}
-#container ul .canon .universe{
-  color: #ff0000;
 }
 
 #container ul li img {
@@ -116,4 +115,55 @@
   border-radius: 5px;
   left: 0px;
   top: 0px;
+}
+
+#container .btncontainer{
+  padding: 24px;
+}
+
+#container .filterbtn {
+  color: #000000;
+  background: #ffc500;
+  width: 130px;
+  height: 130px;
+  border: 0;
+  border-radius: 65px;
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 60px;
+}
+
+#container .filterbtn .btnicon {
+  position: relative;
+  top: 30px;
+}
+
+#container .filterbtn .btntxt {
+  position: relative;
+  bottom: 10px;
+}
+
+.filterbtn.all {
+  background: #ff0000;
+}
+.filterbtn.film {
+  background: #ffc500;
+}
+.filterbtn.game {
+  background: #5dff00;
+}
+.filterbtn.novel {
+  background: #df61df;
+}
+.filterbtn.comic {
+  background: #df8315;
+}
+.filterbtn.tv {
+  background: #00ffd4;
+}
+.filterbtn.legends {
+  background: #00ffd4;
+}
+.filterbtn.canon {
+  background: #ff0000;
 }
