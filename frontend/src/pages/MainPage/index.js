@@ -8,13 +8,11 @@ import {
   FiBookOpen,
   FiFilm,
 } from "react-icons/fi";
-import api from '../../services/api'
-
+import api from "../../services/api";
 
 export default function MainPage() {
   const [medias, setMedia] = useState([]);
 
-  const Media = require('./Media.json')
 
   function setIcon(media) {
     if (media === "game") {
@@ -44,14 +42,10 @@ export default function MainPage() {
   }
 
   useEffect(() => {
-    
-    setMedia(Media);
+    api.get("http://localhost:3300/infos").then((res) => {
+      setMedia(res.data);
+    });
   }, []);
-
-  // useEffect(() => {
-  //   alert("foi");
-  //   api.get('infos').then((res)=> {setMedia(res.data)})
-  // }, []);
 
   return (
     <div id="container">
