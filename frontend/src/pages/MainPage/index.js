@@ -8,11 +8,13 @@ import {
   FiBookOpen,
   FiFilm,
 } from "react-icons/fi";
-import api from "../../services/api";
-import axios from 'axios'
+import api from '../../services/api'
+
 
 export default function MainPage() {
   const [medias, setMedia] = useState([]);
+
+  const Media = require('./Media.json')
 
   function setIcon(media) {
     if (media === "game") {
@@ -32,15 +34,24 @@ export default function MainPage() {
     }
   }
 
+  function setTimeline(timeline) {
+    if (timeline > 0) {
+      return `${timeline} ABY`;
+    }
+    if (timeline < 0) {
+      return `${timeline * -1} BBY`;
+    }
+  }
+
   useEffect(() => {
-    api.get("media").then((response) => {
-      setMedia(response.data);
-    });
-    // axios({
-    //   method: 'GET',
-    //   url: 'http://localhost:3333/media'
-    // }).then(res => {setMedia(res.data)})
-  });
+    
+    setMedia(Media);
+  }, []);
+
+  // useEffect(() => {
+  //   alert("foi");
+  //   api.get('infos').then((res)=> {setMedia(res.data)})
+  // }, []);
 
   return (
     <div id="container">
@@ -57,7 +68,7 @@ export default function MainPage() {
               <div className="icon">{setIcon(media.media)}</div>
               <div className="typetxt">{media.media}</div>
             </div>
-            <div className="timeline">{media.timeline}</div>
+            <div className="timeline">{setTimeline(media.timeline)}</div>
             <div className="series">{media.series}</div>
             <div className="date">{media.releasedate}</div>
             <div className="universe">{media.universe}</div>

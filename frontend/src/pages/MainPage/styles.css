@@ -58,8 +58,8 @@
 
 #container ul li .type .icon{
   position: absolute;
-  left: 350px;
-  bottom: 70px;
+  left: 340px;
+  bottom: 50px;
   font-size: 25px;
 }
 
@@ -88,14 +88,14 @@
 
 #container ul li .timeline{
   position: absolute;
-  right: 450px;
+  right: 500px;
   bottom: 30px;
   font-size: 25px;
 }
 
 #container ul li .date{
   position: absolute;
-  right: 250px;
+  right: 200px;
   bottom: 30px;
   font-size: 25px;
 }

@@ -3,7 +3,9 @@ const Media = require("../models/media");
 
 module.exports = {
     async index (req, res)  {
-        const media = await Media.find()
+        const filter = req.headers.filter
+
+        const media = await Media.find(filter)
         return res.json(media)
     },
     async create(req, res)  {
